@@ -588,38 +588,61 @@ p {
   gap: 2rem;
 }
 
-.philosophy-card {
-  border-left: 3px solid var(--neon-orange);
-  text-align: center;
+.profile-card {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  padding: 0 !important;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background: linear-gradient(135deg, rgba(255, 106, 0, 0.05), rgba(12, 12, 20, 0.5));
 }
 
-.philosophy-icon {
-  color: var(--neon-orange);
-  margin-bottom: 1.5rem;
-  filter: drop-shadow(0 0 10px rgba(255, 106, 0, 0.3));
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition-slow);
 }
 
-.philosophy-quote {
+.profile-card:hover .profile-img {
+  transform: scale(1.03);
+}
+
+.profile-quote-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 1.5rem 1.5rem;
+  background: linear-gradient(to top, rgba(2, 2, 4, 1) 0%, rgba(2, 2, 4, 0.75) 60%, transparent 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  z-index: 2;
+  text-align: center;
+}
+
+.profile-quote {
   font-family: var(--font-body);
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   font-style: italic;
   font-weight: 300;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   line-height: 1.4;
   color: var(--text-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-.philosophy-author {
+.profile-author {
   font-family: var(--font-display);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--neon-orange);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .about-stats-mini .stat-mini-card {
