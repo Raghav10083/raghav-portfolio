@@ -289,11 +289,36 @@
           <!-- PROJECT 01: IT'S ME PICO -->
           <article class="project-showcase reveal-up">
             <div class="project-visual">
-              <div class="image-wrapper">
-                <img src="assets/pico_gameplay.png" alt="It's Me Pico Mobile Gameplay Screen" class="project-img">
-                <div class="img-overlay"></div>
+              <div class="image-wrapper-carousel" id="pico-carousel">
+                <div class="carousel-track">
+                  <div class="carousel-slide active" data-slide-index="0">
+                    <img src="assets/pico_gameplay.png" alt="It's Me Pico Mobile Gameplay Screen" class="project-img">
+                    <div class="img-overlay"></div>
+                    <div class="carousel-slide-title">Gameplay Showcase</div>
+                  </div>
+                  <div class="carousel-slide" data-slide-index="1">
+                    <img src="assets/pico_character_concept.png" alt="It's Me Pico Character Concept Turnaround Sheet" class="project-img">
+                    <div class="img-overlay"></div>
+                    <div class="carousel-slide-title">Character Concept Sheet</div>
+                  </div>
+                  <div class="carousel-slide" data-slide-index="2">
+                    <img src="assets/pico_game_logo.png" alt="It's Me Pico Official Game Icon Logo" class="project-img">
+                    <div class="img-overlay"></div>
+                    <div class="carousel-slide-title">Official Game Icon</div>
+                  </div>
+                </div>
+                
+                <div class="carousel-nav">
+                  <button class="carousel-arrow prev-btn" aria-label="Previous Slide">&lt;</button>
+                  <button class="carousel-arrow next-btn" aria-label="Next Slide">&gt;</button>
+                </div>
+                
+                <div class="carousel-indicators">
+                  <span class="indicator active" data-slide-to="0"></span>
+                  <span class="indicator" data-slide-to="1"></span>
+                  <span class="indicator" data-slide-to="2"></span>
+                </div>
               </div>
-              <div class="project-gallery-title">Gameplay Showcase</div>
               
               <!-- Mock Mobile Trailer UI -->
               <div class="mock-trailer-box">
@@ -311,7 +336,10 @@
                 <span class="project-status badge-released">Released Mobile Game</span>
                 <span class="project-role">Game Designer, Product Planner, Publisher</span>
               </div>
-              <h3 class="project-title">It's Me Pico</h3>
+              <div class="project-title-wrapper">
+                <img src="assets/pico_game_logo.png" alt="It's Me Pico official game icon" class="project-title-icon">
+                <h3 class="project-title">It's Me Pico</h3>
+              </div>
               <p class="project-desc">
                 It's Me Pico is a competitive territory-control mobile game where players battle to capture and defend territory before the timer expires, creating a fast-paced, high-intensity match experience.
               </p>

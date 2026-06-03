@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initContactForm();
   initHeaderScroll();
+  initPicoCarousel();
 });
 
 /* --------------------------------------------------------------------------
@@ -471,4 +472,94 @@ function initContactForm() {
       }, 5000);
     }, 1500);
   });
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Pico Character & Logo Carousel
+   -------------------------------------------------------------------------- */
+function initPicoCarousel() {
+  const carousel = document.getElementById('pico-carousel');
+  if (!carousel) return;
+
+  const slides = carousel.querySelectorAll('.carousel-slide');
+  const indicators = carousel.querySelectorAll('.indicator');
+  const prevBtn = carousel.querySelector('.prev-btn');
+  const nextBtn = carousel.querySelector('.next-btn');
+  
+  if (slides.length === 0) return;
+
+  let currentSlide = 0;
+  let autoPlayTimer = null;
+
+  function showSlide(index) {
+    if (index >= slides.length) {
+      currentSlide = 0;
+    } else if (index < 0) {
+      currentSlide = slides.length - 1;
+    } else {
+      currentSlide = index;
+    }
+
+    slides.forEach((slide, idx) => {
+      if (idx === currentSlide) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+
+    indicators.forEach((indicator, idx) => {
+      if (idx === currentSlide) {
+        indicator.classList.add('active');
+      } else {
+        indicator.classList.remove('active');
+      }
+    });
+  }
+
+  function nextSlide() {
+    showSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+    showSlide(currentSlide - 1);
+  }
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    autoPlayTimer = setInterval(nextSlide, 5000);
+  }
+
+  function stopAutoPlay() {
+    if (autoPlayTimer) {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = null;
+    }
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      startAutoPlay();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      startAutoPlay();
+    });
+  }
+
+  indicators.forEach((indicator, idx) => {
+    indicator.addEventListener('click', () => {
+      showSlide(idx);
+      startAutoPlay();
+    });
+  });
+
+  carousel.addEventListener('mouseenter', stopAutoPlay);
+  carousel.addEventListener('mouseleave', startAutoPlay);
+
+  startAutoPlay();
 }
