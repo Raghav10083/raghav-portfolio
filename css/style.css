@@ -590,8 +590,10 @@ p {
 
 .profile-card {
   position: relative;
-  height: 400px;
+  height: 320px;
   width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
   overflow: hidden;
   border-radius: 12px;
   border: 1px solid var(--border-color);
@@ -604,7 +606,7 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 15%;
   transition: transform var(--transition-slow);
 }
 
@@ -617,7 +619,7 @@ p {
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 2rem 1.5rem 1.5rem;
+  padding: 1.5rem 1.25rem 1.25rem;
   background: linear-gradient(to top, rgba(2, 2, 4, 1) 0%, rgba(2, 2, 4, 0.75) 60%, transparent 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.02);
   z-index: 2;
@@ -626,10 +628,10 @@ p {
 
 .profile-quote {
   font-family: var(--font-body);
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-style: italic;
   font-weight: 300;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   line-height: 1.4;
   color: var(--text-primary);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
@@ -637,7 +639,7 @@ p {
 
 .profile-author {
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
