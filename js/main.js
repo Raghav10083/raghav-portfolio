@@ -116,9 +116,9 @@ function initParticleCanvas() {
     
     // Gradient accent colors
     const colors = [
-      'rgba(108, 92, 231, 0.35)', // Purple
-      'rgba(0, 242, 153, 0.35)',  // Mint
-      'rgba(0, 210, 255, 0.35)'   // Blue
+      'rgba(255, 85, 0, 0.35)',   // Orange
+      'rgba(255, 179, 0, 0.35)',  // Gold
+      'rgba(255, 42, 0, 0.35)'    // Red
     ];
 
     for (let i = 0; i < numberOfParticles; i++) {
@@ -210,7 +210,7 @@ const TIMELINE_DATA = [
            </svg>`
   },
   {
-    num: "02 // VISUAL ASSET DESIGN",
+    num: "02 // ASSET DESIGN",
     title: "Asset Design",
     desc: "Expanded into visual creation and asset development. Worked on designing high-quality game assets, texturing, character/environment consistency, and understanding complex asset production pipelines.",
     icon: `<svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
@@ -218,23 +218,23 @@ const TIMELINE_DATA = [
            </svg>`
   },
   {
-    num: "03 // GAME DEVELOPMENT",
-    title: "Game Development",
+    num: "03 // GAME PROJECTS",
+    title: "Game Projects",
     desc: "Began exploring game design, core gameplay loops, progression systems, publishing platforms, and player experience design. Shifted focus toward transforming static design concepts into fun, responsive, playable experiences.",
     icon: `<svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
             <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
            </svg>`
   },
   {
-    num: "04 // PUBLISHING & OPERATIONS",
-    title: "Publishing & Product Development",
+    num: "04 // PUBLISHING",
+    title: "Publishing",
     desc: "Mastered mobile store publishing workflows, ad integrations (AdMob), telemetry tracking, user acquisition, product roadmap planning, monetization systems, and live operations (LiveOps) strategy for competitive mobile environments.",
     icon: `<svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
             <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
            </svg>`
   },
   {
-    num: "05 // TXNB STUDIOS FOUNDATION",
+    num: "05 // TXNB STUDIOS",
     title: "TXnB Studios",
     desc: "Founded TXnB Studios with a vision of constructing high-fidelity indie games, gaming communities, digital media products, and creative experiences. Leading development pipelines, collaborative jam ecosystems, and scaling studio vision.",
     icon: `<svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
