@@ -2372,6 +2372,23 @@ p {
   resize: none;
 }
 
+.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23a4a4c1' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1.25rem) 50%;
+  background-size: 1.25rem;
+  padding-right: 3rem !important;
+  cursor: pointer;
+}
+
+.form-select option {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
 .form-input:focus {
   border-color: var(--neon-orange);
   background-color: rgba(255, 106, 0, 0.01);
@@ -2390,7 +2407,8 @@ p {
 
 /* Floating Label Animation */
 .form-input:focus ~ .form-label,
-.form-input:not(:placeholder-shown) ~ .form-label {
+.form-input:not(:placeholder-shown) ~ .form-label,
+.form-select.has-value ~ .form-label {
   top: -0.65rem;
   left: 0.75rem;
   font-size: 0.75rem;

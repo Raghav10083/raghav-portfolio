@@ -447,8 +447,20 @@ function initContactForm() {
   const form = document.getElementById('contact-portfolio-form');
   const submitBtn = document.getElementById('form-submit-btn');
   const successMsg = document.getElementById('form-success');
+  const categorySelect = document.getElementById('form-category');
 
   if (!form || !submitBtn) return;
+
+  // Manage select placeholder active/inactive floating labels
+  if (categorySelect) {
+    categorySelect.addEventListener('change', () => {
+      if (categorySelect.value !== '') {
+        categorySelect.classList.add('has-value');
+      } else {
+        categorySelect.classList.remove('has-value');
+      }
+    });
+  }
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -459,9 +471,53 @@ function initContactForm() {
     const oldText = btnSpan.textContent;
     btnSpan.textContent = 'Sending...';
 
-    // Simulate sending payload to server
+    // Retrieve input values
+    const name = document.getElementById('form-name').value;
+    const email = document.getElementById('form-email').value;
+    const subject = document.getElementById('form-subject').value;
+    const message = document.getElementById('form-message').value;
+    const category = categorySelect ? categorySelect.value : 'personal';
+
+    // Determine target recipient based on selection
+    let recipientEmail = 'mathur.raghav@gmail.com'; // Default to personal
+    let categoryName = 'Personal / Collaboration (Raghav Mathur)';
+    
+    if (category === 'studio') {
+      recipientEmail = 'txnbstudios@gmail.com';
+      categoryName = 'Studio Queries / Business (TXnB Studios)';
+    }
+
+    // Construct body layout
+    const mailSubject = `[Portfolio Inquiry] ${subject}`;
+    const mailBody = `Hi Raghav,
+
+You have received a new contact submission from your portfolio website:
+
+Name: ${name}
+Email: ${email}
+Inquiry Category: ${categoryName}
+
+Message:
+--------------------------------------------------
+${message}
+--------------------------------------------------
+
+--
+Sent via Raghav Mathur Portfolio.`;
+
+    // Construct mailto link
+    const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+
+    // Redirection and success feedback
     setTimeout(() => {
+      // Open mail client
+      window.location.href = mailtoLink;
+
+      // Reset form and UI buttons
       form.reset();
+      if (categorySelect) {
+        categorySelect.classList.remove('has-value');
+      }
       submitBtn.disabled = false;
       btnSpan.textContent = oldText;
       successMsg.classList.remove('hide');
@@ -470,7 +526,7 @@ function initContactForm() {
       setTimeout(() => {
         successMsg.classList.add('hide');
       }, 5000);
-    }, 1500);
+    }, 1200);
   });
 }
 
