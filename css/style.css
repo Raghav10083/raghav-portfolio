@@ -1562,6 +1562,10 @@ p {
   flex-shrink: 0;
 }
 
+.txnb-actual-logo {
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.4));
+}
+
 .logo-text-title {
   font-family: var(--font-display);
   font-size: 0.85rem;
