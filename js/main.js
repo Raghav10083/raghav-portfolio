@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initJourneyTimeline();
   initProjectTabs();
-  initAudioPlayer();
   initScrollReveal();
   initContactForm();
   initHeaderScroll();
@@ -326,93 +325,7 @@ function initProjectTabs() {
   });
 }
 
-/* --------------------------------------------------------------------------
-   Premium Audio Player (Project 02)
-   -------------------------------------------------------------------------- */
-function initAudioPlayer() {
-  const triggerBtn = document.getElementById('audio-play-trigger');
-  const visualizer = document.getElementById('audio-bars');
-  const audioFill = document.getElementById('audio-fill');
-  const audio = document.getElementById('bg-music-mock');
 
-  if (!triggerBtn || !audio) return;
-
-  const playSvg = triggerBtn.querySelector('.play-svg');
-  const pauseSvg = triggerBtn.querySelector('.pause-svg');
-
-  let durationSimVal = 0;
-  let simulatedTimer = null;
-
-  function togglePlayState() {
-    if (audio.paused) {
-      // Play Audio
-      audio.play().then(() => {
-        visualizer.classList.add('playing');
-        playSvg.classList.add('hide');
-        pauseSvg.classList.remove('hide');
-        startProgressTracking();
-      }).catch(e => {
-        // Fallback simulation if browser blocks autoplay/playback due to user gesture missing
-        simulatePlayback();
-      });
-    } else {
-      // Pause Audio
-      audio.pause();
-      visualizer.classList.remove('playing');
-      playSvg.classList.remove('hide');
-      pauseSvg.classList.add('hide');
-      stopProgressTracking();
-    }
-  }
-
-  function simulatePlayback() {
-    if (visualizer.classList.contains('playing')) {
-      // Pause simulation
-      visualizer.classList.remove('playing');
-      playSvg.classList.remove('hide');
-      pauseSvg.classList.add('hide');
-      clearInterval(simulatedTimer);
-    } else {
-      // Start simulation
-      visualizer.classList.add('playing');
-      playSvg.classList.add('hide');
-      pauseSvg.classList.remove('hide');
-      
-      simulatedTimer = setInterval(() => {
-        durationSimVal += 0.5;
-        if (durationSimVal > 100) {
-          durationSimVal = 0;
-        }
-        audioFill.style.width = `${durationSimVal}%`;
-      }, 100);
-    }
-  }
-
-  function startProgressTracking() {
-    audio.addEventListener('timeupdate', updateProgressBar);
-    audio.addEventListener('ended', resetPlayerState);
-  }
-
-  function stopProgressTracking() {
-    audio.removeEventListener('timeupdate', updateProgressBar);
-  }
-
-  function updateProgressBar() {
-    if (audio.duration) {
-      const percent = (audio.currentTime / audio.duration) * 100;
-      audioFill.style.width = `${percent}%`;
-    }
-  }
-
-  function resetPlayerState() {
-    visualizer.classList.remove('playing');
-    playSvg.classList.remove('hide');
-    pauseSvg.classList.add('hide');
-    audioFill.style.width = '0%';
-  }
-
-  triggerBtn.addEventListener('click', togglePlayState);
-}
 
 /* --------------------------------------------------------------------------
    Scroll Reveal Animation (Intersection Observer)
