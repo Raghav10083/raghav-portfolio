@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initHeaderScroll();
   initPicoCarousel();
+  initPicoSkins();
 });
 
 /* --------------------------------------------------------------------------
@@ -562,4 +563,41 @@ function initPicoCarousel() {
   carousel.addEventListener('mouseleave', startAutoPlay);
 
   startAutoPlay();
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Pico Character Skins Switcher
+   -------------------------------------------------------------------------- */
+function initPicoSkins() {
+  const showcase = document.querySelector('.skins-showcase');
+  if (!showcase) return;
+
+  const previewImg = showcase.querySelector('#skin-preview-img');
+  const nameLabel = showcase.querySelector('#skin-name-label');
+  const thumbBtns = showcase.querySelectorAll('.skin-thumb-btn');
+
+  thumbBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      const skinSrc = btn.getAttribute('data-skin-src');
+      const skinName = btn.getAttribute('data-skin-name');
+
+      thumbBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (previewImg) {
+        previewImg.style.opacity = '0';
+        setTimeout(() => {
+          previewImg.src = skinSrc;
+          previewImg.alt = `Pico Character Skin ${skinName}`;
+          previewImg.style.opacity = '1';
+        }, 150);
+      }
+
+      if (nameLabel) {
+        nameLabel.textContent = skinName;
+      }
+    });
+  });
 }
